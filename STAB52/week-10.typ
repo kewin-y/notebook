@@ -1,3 +1,5 @@
+#set heading(numbering: "1.")
+
 = STAB52 Week 10
 
 == Definition.
@@ -249,8 +251,8 @@ A machine produces rectangles with random (possibly dependent) sides that follow
 Let $X, Y ~ "Uniform"(0, 1)$ be the length and width of the rectangle respectively. Note that the area is given by RV $X Y$. Thus,
 
 $
-   |E(X Y)| & <= sqrt(E(X^2)E(Y^2)) \
-            & = sqrt(1/3 dot 1/3)   \
-            & = 1/3                 \
+   |E(X Y)| & <= sqrt(E(X^2)E(Y^2))                                            \
+            & = sqrt(1/3 dot 1/3)                                              \
+            & = 1/3                                                            \
   => E(X Y) & <= 1/3", since "E(X Y) >= 0" i.e., the area must be nonnegative"
 $
