@@ -98,29 +98,32 @@ $
   V(macron(X)_2) & = V(1/2 (X_1 + X_2))                       \
                  & = 1/4 (V(X_1) + V(X_2) + 2"Cov"(X_1, X_2)) \
                  & = 1/4 (1 + 1 + 2 dot (-1))                 \
-                 & = 0
+                 & = 0.
 $
 
 == Definition.
 
-Consider a sequence of continuous RVs $X_1, X_2, ...$ and RV $Y$. We say that $X_n$ converges in probability to $Y$, as $n arrow infinity$ (denoted $X_n attach(arrow, tr: P) Y$) if
+Consider an infinite sequence of continuous RVs $X_1, X_2, ...$ and RV $Y$. We say that ${X_n}$ converges in probability to $Y$, as $n arrow infinity$ (denoted $X_n attach(arrow, t: P) Y$) if
 
 $
-  forall epsilon > 0, lim_(n arrow infinity) P(|X_n - Y| >= epsilon) = 0
-$
-
-== Definition.
-
-Consider a sequence of continuous RVs $X_1, X_2, ...$ and RV $Y$. We say that $X_n$ converges in distribution to $Y$, as $n arrow infinity$ (denoted $X_n attach(arrow, tr: D) Y$) if
-
-$
-  forall x in RR, lim_(x arrow infinity) P(X_n <= x) = P(Y <= x)
+  forall epsilon > 0, lim_(n arrow infinity) P(|X_n - Y| >= epsilon) = 0.
 $
 
 == Definition.
 
-Consider a sequence of independent RVs $X_1, ..., X_n$ with common mean $mu$ and variance $sigma^2$. Then, their standardized average is defined as:
+Consider an infinite sequence of continuous RVs $X_1, X_2, ...$ and RV $Y$. We say that ${X_n}$ converges in distribution to $Y$, as $n arrow infinity$ (denoted $X_n attach(arrow, t: D) Y$) if
 
 $
-  Z_n = ((macron(X)_n - mu) / (sigma \/ sqrt(n))) = sqrt(n) ((macron(X)_n - mu) / sigma)
+  forall x in RR, lim_(x arrow infinity) P(X_n <= x) = P(Y <= x).
 $
+
+
+== Theorem. Central Limit Theorem
+
+Consider a sequence of independent RVs $X_1, ..., X_n$ with common mean $mu$ and finite variance $sigma^2$. Then, define their standardized average as:
+
+$
+  Z_n = ((macron(X)_n - mu) / (sigma \/ sqrt(n))) = sqrt(n) ((macron(X)_n - mu) / sigma).
+$
+
+Let $Z ~ N(0, 1)$. Then, as $n arrow infinity$, the sequence ${Z_n}$ converges in distribution to $Z$. That is, $Z_n attach(arrow, t: D) Z$.
