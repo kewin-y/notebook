@@ -76,7 +76,7 @@ For $X_1, ..., X_n ~^("iid") "N"(0, 1)$, we have: $macron(X)_n ~ "N"(0, 1/n)$
 
 == Example.
 
-Consider two dependent RVs X1, X2 with mean 0 & variance 1, and apply Chebyshev’s inequality to their average when
+Consider two dependent RVs $X_1, X_2$ with mean 0 & variance 1, and apply Chebyshev’s inequality to their average when
 
 + RVs are perfectly positively correlated (i.e. $X_1 = X_2$)
 + RVs are perfectly negatively correlated (i.e. $X_1 = −X_2$)
@@ -127,3 +127,83 @@ $
 $
 
 Let $Z ~ N(0, 1)$. Then, as $n arrow infinity$, the sequence ${Z_n}$ converges in distribution to $Z$. That is, $Z_n attach(arrow, t: D) Z$.
+
+=== Proof.
+
+We use the following property:
+
+$
+  m_X_n (t) arrow m_X (t) "as" n arrow infinity => X_n attach(arrow, t: D) X
+$
+
+We have:
+
+$
+  Z_n & = (macron(X)_n - mu) / (sigma \/ sqrt(n))                   \
+      & = ((1/n sum_(i = 1)^n X_i) - mu (n/n)) / (sigma \/ sqrt(n)) \
+      & = sum_(i = 1)^n 1/sqrt(n) dot (X_i - mu) / sigma
+$
+
+It follows that:
+
+$
+  m_Z_n (t) & = m_(sum_(i = 1)^n 1/sqrt(n) dot (X_i - mu) / sigma) (t)\
+  & = product_(i = 1)^n m_(1/sqrt(n) dot (X_i - mu) / sigma) (t)", by independence," \
+  & = product_(i = 1)^n m_((X_i - mu) / sigma) (t/sqrt(n))", by properties of MGFs," \
+  & = [m_((X_i - mu) / sigma) (t/sqrt(n))]^n", as each "X_i" is distributed the same," \
+  & = [1 + ((t \/sqrt(n))^1) / 1! mu_1 + ((t \/sqrt(n))^2) / 2! mu_2 + ((t \/sqrt(n))^3) / 3! mu_3 + ... ]^n", by series expansion of MGF," \
+  & = [1 + ((t \/sqrt(n))^1) / 1! dot 0 + ((t \/sqrt(n))^2) / 2! dot 1 + ((t \/sqrt(n))^3) / 3! mu_3 + ... ]^n", "(X_i - mu) \/ sigma" is a standardized RV," \
+  & = [1 + ((t^2 \/2))/n + ((t \/sqrt(n))^3) / 3! mu_3 + ... ]^n,
+$
+
+Where each $mu_r$ is the $r$th moment of the RV $(X_i - mu) / sigma$.
+
+Therefore,
+
+$
+  lim_(n arrow infinity) m_Z_n (t) & = lim_(n arrow infinity) [1 + ((t^2 \/2)) / n + ((t \/sqrt(n))^3) / 3! mu_3 + ... ]^n \
+  & = lim_(n arrow infinity) [1 + ((t^2 \/2)) / n]^n", intuition: remaining terms tend to 0 faster" \
+  & = e^(t^2 / 2)", by limit definition of e," \
+  & = m_Z (t)", recall that "Z ~ "Normal"(0, 1).
+$
+
+So we have: $m_Z_n (t) arrow m_Z (t)$ as $n arrow infinity$. By the previous property, we must have $Z_n attach(arrow, t: D) Z$. $qed$
+
+
+== Example. (Normal approx. to Binomial)
+
+=== Solution.
+
+Let $X~"Binomial"(n = 25, p = 0.5)$. Then, this is given by $P(X >= 15)$. However, this is too cumbersome to calculate!
+
+We have:
+
+$
+  "Proportion of Heads" & = 1/n sum_(i = 1)^n I_i   \
+                        & = 1/25 sum_(i = 1)^25 I_i \
+                        & = macron(X)_25,
+$
+
+Where
+
+$
+  I_i = cases(1\, "if heads", 0\, "otherwise")
+$
+
+Note $E(I_i) = mu = 0.5$ and $V(I_i) = sigma^2 = 0.5 * 0.5 = 0.25$.
+
+By the CLT,
+
+$
+  macron(X)_25 attach(~, t: "appr.") "N"(mu = 1/2, sigma^2 / n = 1/4 dot 1/25 = 1/100)
+$
+
+Let $Z~"Normal"(0, 1)$. Then,
+
+$
+  P(macron(X)_25 > 0.6) & approx P(Z > (0.6 - mu) / (sigma \/ sqrt(n))  ) \
+  & = P(Z > (0.6 - 0.5) / (0.5 \/ 5)) \
+  & = P(Z > 1) \
+  & = 0.1586
+$
+
