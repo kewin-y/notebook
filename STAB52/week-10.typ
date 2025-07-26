@@ -24,7 +24,7 @@ The moment generating function (MGF) of RV $X$ is given by: $ m(t) = E(e^(t X)) 
 
 == Theorem.
 
-In particular, the MGF allows for calculation for all moments of X: $ E(X^k) = m^((k))(0) = lr(d^k/(d t^k) m(t)|)_(t=0) $
+The MGF allows for calculation for all moments of X: $ E(X^k) = m^((k))(0) = lr(d^k/(d t^k) m(t)|)_(t=0) $
 
 === Naive Proof/Intuition.
 
@@ -39,7 +39,7 @@ $
   &= sum_(i = 0)^(infinity) t^i/i! mu_i", where "mu_i" is the "i"th moment"
 $
 
-Notice that $m^((k)) = mu_k$, for all $k$.
+Notice that $m^((k))(0) = mu_k$, for all $k$.
 
 == Example
 
@@ -76,7 +76,7 @@ $
   m_X (t) = m_Y (t) <=> X ~ Y
 $
 
-where $X ~ Y$ stands for "$X$ is distributed the same as $Y$"
+where $X ~ Y$ stands for "$X$ is distributed the same as $Y$".
 
 == Theorem. MGF Method
 
